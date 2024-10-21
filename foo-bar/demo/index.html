@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <style>
+    body {
+      background: #fafafa;
+      display: flex;
+      flex-direction: column; /* Changed to column for better layout */
+      align-items: center;    /* Center items horizontally */
+      padding: 20px;
+    }
+    .product-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px; /* Add gap between product cards */
+    }
+  </style>
+</head>
+<body>
+  <div id="demo"></div>
+
+  <script type="module">
+    import { html, render } from 'lit';
+    import '../dist/src/foo-bar.js';  // Ensure the correct path
+    import '../dist/src/button-e.js'; // Ensure the correct path
+    import '../dist/src/navbar-e.js'; // Ensure the correct path
+    import '../dist/src/product-card-e.js'; // Ensure the correct path
+    import '../dist/src/accordion-e.js'; // Ensure the correct path
+
+    render(
+      html`
+        <navbar-e title="My Awesome Navbar" .links=${[
+          { label: 'Home', href: '/' },
+          { label: 'About', href: '/about' },
+          { label: 'Contact', href: '/contact' }
+        ]}></navbar-e>
+        
+        <button-e></button-e> 
+
+        <div class="product-cards">
+          <product-card
+            title="Product 1"
+            description="Description for Product 1"
+            imgSrc="https://via.placeholder.com/300"
+            price="29.99">
+          </product-card>
+          <product-card
+            title="Product 2"
+            description="Description for Product 2"
+            imgSrc="https://via.placeholder.com/300"
+            price="39.99">
+          </product-card>
+          <product-card
+            title="Product 3"
+            description="Description for Product 3"
+            imgSrc="https://via.placeholder.com/300"
+            price="49.99">
+          </product-card>
+        </div>
+
+        <accordion-component header-text="More Information">
+          <p>This section contains additional information about our products.</p>
+          <p>Here you can provide details such as usage instructions or warranty information.</p>
+        </accordion-component>
+
+        <accordion-component header-text="Customer Reviews">
+          <p>Review 1: Great product! Highly recommend.</p>
+          <p>Review 2: Good value for the price.</p>
+        </accordion-component>
+      `,
+      document.querySelector('#demo')
+    );
+  </script>
+</body>
+</html>
